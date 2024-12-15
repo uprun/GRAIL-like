@@ -177,6 +177,7 @@ func _on_button_pressed():
 	if drawn_symbol.lines.size() > 0:
 		compress_symbol_drawn(drawn_symbol)
 		stored_symbols.push_back(drawn_symbol)
+		golden_match.push_back(false)
 
 
 func _on_button_button_down():
