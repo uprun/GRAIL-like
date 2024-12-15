@@ -33,6 +33,7 @@ func compress_symbol_drawn(symbol: Symbol_Drawn):
 				top = point
 			if point.x < left.x:
 				left = point
+	print("center", left.x, top.y, bottom.y)
 	var scale = (bottom.y - top.y) / 40.0 
 	for line in symbol.lines:
 		symbol.compressed_lines.push_back([])
