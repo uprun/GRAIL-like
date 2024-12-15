@@ -110,7 +110,7 @@ func _process(_delta):
 		compare_index = null
 		
 	if compare_index != null:
-		var test = (Symbol_Drawn) stored_symbols[0]
+		var test = stored_symbols[0] as Symbol_Drawn
 		test.compressed
 
 
