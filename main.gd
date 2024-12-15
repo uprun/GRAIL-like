@@ -79,7 +79,6 @@ func add_sub_path(start, finish):
 	sub.Finish = finish
 	sub.Id = len(all_sub_paths)
 	sub.Intersecting = false
-	analyze_sub_path(sub)
 	all_sub_paths.push_back(sub)
 
 func _unhandled_input(event):
