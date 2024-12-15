@@ -111,7 +111,14 @@ func _process(_delta):
 		
 	if compare_index != null:
 		var test = stored_symbols[0] as Symbol_Drawn
-		for line in symbol_to_compare.compressed_lines
+		var matched_points = 0
+		for line in symbol_to_compare.compressed_lines:
+			for point in line:
+				for compare_line in test.compressed_lines:
+					for compare_point in compare_line:
+						if (compare_point - point ).length() < 2.0:
+							matched_points += 1
+				
 		test.compressed_lines
 
 
