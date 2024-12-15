@@ -110,8 +110,8 @@ func _process(_delta):
 		compare_index = null
 		
 	if compare_index != null:
-		var test = stored_symbols[0]
-		
+		var test = (Symbol_Drawn) stored_symbols[0]
+		test.compressed
 
 
 # Called when the node enters the scene tree for the first time.
