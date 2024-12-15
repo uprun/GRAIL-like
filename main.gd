@@ -30,7 +30,7 @@ func compress_symbol_drawn(symbol: Symbol_Drawn):
 				bottom = point
 			if point.y < top.y:
 				top = point
-	var scale = 40 / (bottom.y - top.y) 
+	var scale = 40.0 / (bottom.y - top.y) 
 	for line in symbol.lines:
 		symbol.compressed_lines.push_back([])
 		for point in line:
