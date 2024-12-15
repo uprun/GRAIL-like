@@ -130,8 +130,11 @@ func _process(_delta):
 						if (compare_point - point ).length() < 2.0:
 							matched_points += 1
 							break
-		compare_index += 1
 		var match_ratio = matched_points * 100.0 / total_points
+		if match_ratio > 85:
+			golden_match[compare_index] = true
+		compare_index += 1
+		
 		print( "match ratio: ",  match_ratio)
 		max_matching_ratio = max(match_ratio, max_matching_ratio)
 
