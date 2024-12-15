@@ -92,7 +92,6 @@ func _process(_delta):
 				add_sub_path(last_point, mouse_position)
 				var dist  = last_point.distance_to(mouse_position)
 				current_line_length += dist
-				print (dist)
 				
 	else:
 		if not current_line.is_empty():
