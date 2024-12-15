@@ -20,7 +20,7 @@ class Sub_Path:
 	
 class Symbol_Drawn:
 	var lines = []
-	var compressed_points = []
+	var compressed_lines = []
 	
 func compress_symbol_drawn(symbol: Symbol_Drawn):
 	var first_line = symbol.lines[0]
@@ -31,6 +31,7 @@ func compress_symbol_drawn(symbol: Symbol_Drawn):
 			bottom = point
 	var scale = 40 / (bottom.y - top.y) 
 	for line in symbol.lines:
+		symbol.compressed_lines.push_back([])
 		for point in line:
 			var x = (point.x - top.x) * scale
 			var y = (point.y - top.y) * scale
