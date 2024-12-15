@@ -43,7 +43,7 @@ func compress_symbol_drawn(symbol: Symbol_Drawn):
 			var y = (point.y - top.y) / scale
 			symbol.compressed_lines.back().push_back(Vector2(x, y))
 
-func draw_compressed_symbol(symbol: Symbol_Drawn, offset: Vector2):
+func draw_compressed_symbol(symbol: Symbol_Drawn, offset: Vector2, color):
 	for line in symbol.compressed_lines:
 		var previous = null
 		var initial = null
@@ -51,7 +51,7 @@ func draw_compressed_symbol(symbol: Symbol_Drawn, offset: Vector2):
 			if initial == null:
 				initial = point
 			if previous != null:
-				draw_line(previous + offset, point + offset, Color.GREEN, width)
+				draw_line(previous + offset, point + offset, color, width)
 			previous = point
 		if (previous - initial).length() < 2:
 			draw_circle(initial + offset, width, color)
@@ -102,6 +102,24 @@ func _unhandled_input(event):
 			lines.push_back(current_line)
 			current_line = []
 
+var golden_match = []
+
+
+func compare_symbols(one, two):
+	var matched_points = 0
+	var total_points = 0
+	for line in one.compressed_lines:
+		for point in line:
+			total_points += 1
+			for compare_line in two.compressed_lines:
+				for compare_point in compare_line:
+					if (compare_point - point ).length() < 2.0:
+						matched_points += 1
+						break
+	var match_ratio = matched_points * 100.0 / total_points
+	return match_ratio
+
+
 func _process(_delta):
 	queue_redraw()
 	if compare_index == null:
@@ -110,24 +128,24 @@ func _process(_delta):
 		compare_index = null
 		if symbol_to_compare != null and max_matching_ratio < 85:
 			stored_symbols.push_back(symbol_to_compare)
+			golden_match.push_back(false)
 		symbol_to_compare = null
 		max_matching_ratio = 0.0
 		
 		
 	if compare_index != null and symbol_to_compare != null:
 		var test = stored_symbols[compare_index] as Symbol_Drawn
-		var matched_points = 0
-		var total_points = 0
-		for line in symbol_to_compare.compressed_lines:
-			for point in line:
-				total_points += 1
-				for compare_line in test.compressed_lines:
-					for compare_point in compare_line:
-						if (compare_point - point ).length() < 2.0:
-							matched_points += 1
-							break
+		
+		var match_ratio = compare_symbols(symbol_to_compare, test)
+		#reverse comparison
+		match_ratio = min(match_ratio, compare_symbols(test, symbol_to_compare))
+		
+		if match_ratio > 85:
+			golden_match[compare_index] = true
+		else:
+			golden_match[compare_index] = false
 		compare_index += 1
-		var match_ratio = matched_points * 100.0 / total_points
+		
 		print( "match ratio: ",  match_ratio)
 		max_matching_ratio = max(match_ratio, max_matching_ratio)
 
@@ -157,9 +175,15 @@ func _draw():
 	for sub in all_sub_paths:
 		my_draw_sub(sub)
 		
-	var offset = Vector2(50,20)
-	for symbol in stored_symbols:
-		draw_compressed_symbol(symbol, offset)
+	var offset = Vector2(50,120)
+	for i in len(stored_symbols):
+		var symbol = stored_symbols[i]
+		draw_compressed_symbol(symbol, offset, Color.GREEN)
+		if symbol_to_draw_over != null:
+			if golden_match[i]:
+				draw_compressed_symbol(symbol_to_draw_over, offset, Color.GOLD)
+			else:
+				draw_compressed_symbol(symbol_to_draw_over, offset, Color.MAGENTA)
 		offset.x += 150
 
 
@@ -171,6 +195,7 @@ func _on_button_pressed():
 	if drawn_symbol.lines.size() > 0:
 		compress_symbol_drawn(drawn_symbol)
 		stored_symbols.push_back(drawn_symbol)
+		golden_match.push_back(false)
 
 
 func _on_button_button_down():
@@ -184,7 +209,7 @@ func _on_compare_button_down():
 var compare_index = null
 var symbol_to_compare: Symbol_Drawn = null
 var max_matching_ratio = 0.0
-
+var symbol_to_draw_over = null
 func _on_compare_pressed():
 	var drawn_symbol = Symbol_Drawn.new()
 	drawn_symbol.lines = lines
@@ -193,4 +218,5 @@ func _on_compare_pressed():
 	if drawn_symbol.lines.size() > 0:
 		compress_symbol_drawn(drawn_symbol)
 		symbol_to_compare = drawn_symbol
+		symbol_to_draw_over = drawn_symbol
 		compare_index = null
