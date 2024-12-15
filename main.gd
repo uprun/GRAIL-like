@@ -77,8 +77,7 @@ func add_sub_path(start, finish):
 	analyze_sub_path(sub)
 	all_sub_paths.push_back(sub)
 
-
-func _process(_delta):
+func _unhandled_input(event):
 	var mouse_position = get_viewport().get_mouse_position()
 	if Input.is_mouse_button_pressed( 1 ):
 		if current_line.is_empty():
@@ -98,6 +97,8 @@ func _process(_delta):
 		if not current_line.is_empty():
 			lines.push_back(current_line)
 			current_line = []
+
+func _process(_delta):
 	queue_redraw()
 
 
