@@ -118,6 +118,9 @@ func _process(_delta):
 		var test = stored_symbols[compare_index] as Symbol_Drawn
 		var matched_points = 0
 		var total_points = 0
+		var offset = Vector2(50, 20)
+		offset.x += 150 * compare_index
+		draw_compressed_symbol(symbol_to_compare, offset, Color.MAGENTA)
 		for line in symbol_to_compare.compressed_lines:
 			for point in line:
 				total_points += 1
