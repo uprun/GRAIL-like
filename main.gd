@@ -116,6 +116,8 @@ func compare_symbols(one, two):
 					if (compare_point - point ).length() < 2.0:
 						matched_points += 1
 						break
+	var match_ratio = matched_points * 100.0 / total_points
+	return match_ratio
 
 
 func _process(_delta):
@@ -134,7 +136,7 @@ func _process(_delta):
 	if compare_index != null and symbol_to_compare != null:
 		var test = stored_symbols[compare_index] as Symbol_Drawn
 		
-		var match_ratio = matched_points * 100.0 / total_points
+		
 		if match_ratio > 85:
 			golden_match[compare_index] = true
 		else:
