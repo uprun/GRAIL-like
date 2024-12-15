@@ -28,6 +28,7 @@ func compress_symbol_drawn(symbol: Symbol_Drawn):
 	for point in first_line:
 		if point.y > bottom.y:
 			bottom = point
+	
 
 var stored_symbols = []
 var all_sub_paths = []
