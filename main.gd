@@ -20,7 +20,8 @@ class Sub_Path:
 	
 class Symbol_Drawn:
 	var lines = []
-	
+
+var stored_symbols = []
 var all_sub_paths = []
 
 func are_intersecting(first: Sub_Path, second: Sub_Path):
@@ -98,4 +99,6 @@ func _draw():
 
 
 func _on_button_pressed():
+	var drawn_symbol = Symbol_Drawn.new()
 	
+	stored_symbols.push_back()
