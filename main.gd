@@ -155,5 +155,13 @@ func _on_compare_button_down():
 	pass # Replace with function body.
 
 
+var compare_index = null
+var symbol_to_compare = null
+
 func _on_compare_pressed():
-	pass # Replace with function body.
+	var drawn_symbol = Symbol_Drawn.new()
+	drawn_symbol.lines = lines
+	lines = []
+	all_sub_paths = []
+	if drawn_symbol.lines.size() > 0:
+		compress_symbol_drawn(drawn_symbol)
