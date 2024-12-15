@@ -166,7 +166,7 @@ func _draw():
 	for sub in all_sub_paths:
 		my_draw_sub(sub)
 		
-	var offset = Vector2(50,20)
+	var offset = Vector2(50,120)
 	for i in len(stored_symbols):
 		var symbol = stored_symbols[i]
 		draw_compressed_symbol(symbol, offset, Color.GREEN)
