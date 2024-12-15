@@ -165,3 +165,5 @@ func _on_compare_pressed():
 	all_sub_paths = []
 	if drawn_symbol.lines.size() > 0:
 		compress_symbol_drawn(drawn_symbol)
+		symbol_to_compare = drawn_symbol
+		compare_index = null
