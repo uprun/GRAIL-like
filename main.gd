@@ -102,6 +102,9 @@ func _unhandled_input(event):
 			lines.push_back(current_line)
 			current_line = []
 
+func golden_match = []
+
+
 func _process(_delta):
 	queue_redraw()
 	if compare_index == null:
