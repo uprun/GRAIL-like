@@ -40,7 +40,7 @@ func draw_compressed_symbol(symbol: Symbol_Drawn, offset: Vector2):
 		var previous = null
 		for point in line:
 			if previous != null:
-				draw_line(previous, point, Color.GREEN, width)
+				draw_line(previous + offset, point + offset, Color.GREEN, width)
 			previous = point
 
 var stored_symbols = []
