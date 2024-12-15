@@ -104,6 +104,14 @@ func _unhandled_input(event):
 
 func _process(_delta):
 	queue_redraw()
+	if compare_index == null:
+		compare_index = 0
+	if stored_symbols.size() <= compare_index:
+		compare_index = null
+		
+	if compare_index != null:
+		var test = stored_symbols[0]
+		
 
 
 # Called when the node enters the scene tree for the first time.
