@@ -19,7 +19,7 @@ class Sub_Path:
 	var Intersecting: bool
 	
 class Symbol_Drawn:
-	var Sub_paths = []
+	var lines = []
 	
 var all_sub_paths = []
 
@@ -98,4 +98,4 @@ func _draw():
 
 
 func _on_button_pressed():
-	pass # Replace with function body.
+	
