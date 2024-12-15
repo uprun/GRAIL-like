@@ -100,5 +100,6 @@ func _draw():
 
 func _on_button_pressed():
 	var drawn_symbol = Symbol_Drawn.new()
-	
+	drawn_symbol.lines = lines
+	lines = []
 	stored_symbols.push_back(drawn_symbol)
