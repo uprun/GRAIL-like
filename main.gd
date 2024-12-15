@@ -108,7 +108,10 @@ func _process(_delta):
 		compare_index = 0
 	if stored_symbols.size() <= compare_index:
 		compare_index = null
+		if symbol_to_compare != null and max_matching_ratio < 85:
+			
 		symbol_to_compare = null
+		
 		
 	if compare_index != null and symbol_to_compare != null:
 		var test = stored_symbols[compare_index] as Symbol_Drawn
@@ -125,8 +128,6 @@ func _process(_delta):
 		compare_index += 1
 		var match_ratio = matched_points * 100.0 / total_points
 		print( "match ratio: ",  match_ratio)
-		if match_ratio < 85:
-			stored_symbols.push_back(symbol_to_compare)
 
 
 # Called when the node enters the scene tree for the first time.
