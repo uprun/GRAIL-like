@@ -128,7 +128,7 @@ func _draw():
 	var offset = Vector2(50,20)
 	for symbol in stored_symbols:
 		draw_compressed_symbol(symbol, offset)
-		offset.x += 50
+		offset.x += 150
 
 
 func _on_button_pressed():
