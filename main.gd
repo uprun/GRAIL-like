@@ -163,6 +163,7 @@ func _draw():
 	var offset = Vector2(50,20)
 	for symbol in stored_symbols:
 		draw_compressed_symbol(symbol, offset, Color.GREEN)
+		draw_compressed_symbol(symbol_to_draw_over, offset, Color.MAGENTA)
 		offset.x += 150
 
 
