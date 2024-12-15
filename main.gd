@@ -105,6 +105,19 @@ func _unhandled_input(event):
 var golden_match = []
 
 
+func compare_symbols(one, two):
+	var matched_points = 0
+	var total_points = 0
+	for line in one.compressed_lines:
+		for point in line:
+			total_points += 1
+			for compare_line in two.compressed_lines:
+				for compare_point in compare_line:
+					if (compare_point - point ).length() < 2.0:
+						matched_points += 1
+						break
+
+
 func _process(_delta):
 	queue_redraw()
 	if compare_index == null:
@@ -120,16 +133,7 @@ func _process(_delta):
 		
 	if compare_index != null and symbol_to_compare != null:
 		var test = stored_symbols[compare_index] as Symbol_Drawn
-		var matched_points = 0
-		var total_points = 0
-		for line in symbol_to_compare.compressed_lines:
-			for point in line:
-				total_points += 1
-				for compare_line in test.compressed_lines:
-					for compare_point in compare_line:
-						if (compare_point - point ).length() < 2.0:
-							matched_points += 1
-							break
+		
 		var match_ratio = matched_points * 100.0 / total_points
 		if match_ratio > 85:
 			golden_match[compare_index] = true
