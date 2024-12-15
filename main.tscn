@@ -13,4 +13,5 @@ offset_bottom = 87.0
 text = "save
 "
 
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
