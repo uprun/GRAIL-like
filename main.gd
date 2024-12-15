@@ -35,7 +35,7 @@ func compress_symbol_drawn(symbol: Symbol_Drawn):
 		for point in line:
 			var x = (point.x - top.x) * scale
 			var y = (point.y - top.y) * scale
-			symbol.compressed_points.push_back(Vector2(x, y))
+			symbol.compressed_lines.back().push_back(Vector2(x, y))
 
 var stored_symbols = []
 var all_sub_paths = []
