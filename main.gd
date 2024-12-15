@@ -15,7 +15,6 @@ var current_line_length = 0
 class Sub_Path:
 	var Start: Vector2
 	var Finish: Vector2
-	var Distance_From_Start_Of_Path: float
 	var Path_Index: int
 	var Index_Inside_of_Path: int
 	var Id: int
@@ -41,7 +40,6 @@ func add_sub_path(start, finish):
 	var sub = Sub_Path.new()
 	sub.Start = start
 	sub.Finish = finish
-	sub.Distance_From_Start_Of_Path = current_line_length
 	sub.Path_Index = len(lines)
 	sub.Index_Inside_of_Path = len(current_line)
 	sub.Id = len(all_sub_paths)
