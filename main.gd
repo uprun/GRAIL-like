@@ -133,6 +133,8 @@ func _process(_delta):
 		var match_ratio = matched_points * 100.0 / total_points
 		if match_ratio > 85:
 			golden_match[compare_index] = true
+		else:
+			golden_match[compare_index] = false
 		compare_index += 1
 		
 		print( "match ratio: ",  match_ratio)
