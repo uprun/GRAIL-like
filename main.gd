@@ -18,6 +18,9 @@ class Sub_Path:
 	var Id: int
 	var Intersecting: bool
 	
+class Symbol_Drawn:
+	var Sub_paths: Sub_Path[]
+	
 var all_sub_paths = []
 
 func are_intersecting(first: Sub_Path, second: Sub_Path):
