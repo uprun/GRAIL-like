@@ -10,6 +10,7 @@ offset_left = 51.0
 offset_top = 33.0
 offset_right = 198.0
 offset_bottom = 87.0
+button_mask = 7
 text = "save
 "
 
