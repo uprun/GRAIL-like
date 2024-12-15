@@ -35,6 +35,13 @@ func compress_symbol_drawn(symbol: Symbol_Drawn):
 			var y = (point.y - top.y) * scale
 			symbol.compressed_lines.back().push_back(Vector2(x, y))
 
+func draw_compressed_symbol(symbol: Symbol_Drawn, offset: Vector2):
+	for line in symbol.compressed_lines:
+		var previous = null
+		for point in line:
+			if previous != null:
+			draw_line(sub.Start, point, Color.GREEN, width)
+
 var stored_symbols = []
 var all_sub_paths = []
 
