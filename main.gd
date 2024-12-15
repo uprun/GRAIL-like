@@ -182,7 +182,7 @@ func _on_compare_button_down():
 
 var compare_index = null
 var symbol_to_compare: Symbol_Drawn = null
-var max_matching_ratio = 0
+var max_matching_ratio = 0.0
 
 func _on_compare_pressed():
 	var drawn_symbol = Symbol_Drawn.new()
