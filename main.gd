@@ -123,7 +123,8 @@ func _process(_delta):
 							matched_points += 1
 							break
 		compare_index += 1
-		print( "match ratio: ", matched_points * 100.0 / total_points)
+		var match_ratio = matched_points * 100.0 / total_points
+		print( "match ratio: ",  match_ratio)
 
 
 # Called when the node enters the scene tree for the first time.
