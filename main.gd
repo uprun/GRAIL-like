@@ -167,7 +167,8 @@ func _draw():
 		my_draw_sub(sub)
 		
 	var offset = Vector2(50,20)
-	for symbol in stored_symbols:
+	for i in len(stored_symbols):
+		var symbol = stored_symbols[i]
 		draw_compressed_symbol(symbol, offset, Color.GREEN)
 		if symbol_to_draw_over != null:
 			draw_compressed_symbol(symbol_to_draw_over, offset, Color.MAGENTA)
