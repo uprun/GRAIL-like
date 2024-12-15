@@ -43,7 +43,7 @@ func compress_symbol_drawn(symbol: Symbol_Drawn):
 			var y = (point.y - top.y) / scale
 			symbol.compressed_lines.back().push_back(Vector2(x, y))
 
-func draw_compressed_symbol(symbol: Symbol_Drawn, offset: Vector2):
+func draw_compressed_symbol(symbol: Symbol_Drawn, offset: Vector2, color):
 	for line in symbol.compressed_lines:
 		var previous = null
 		var initial = null
@@ -51,7 +51,7 @@ func draw_compressed_symbol(symbol: Symbol_Drawn, offset: Vector2):
 			if initial == null:
 				initial = point
 			if previous != null:
-				draw_line(previous + offset, point + offset, Color.GREEN, width)
+				draw_line(previous + offset, point + offset, color, width)
 			previous = point
 		if (previous - initial).length() < 2:
 			draw_circle(initial + offset, width, color)
