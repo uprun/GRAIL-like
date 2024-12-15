@@ -46,10 +46,15 @@ func compress_symbol_drawn(symbol: Symbol_Drawn):
 func draw_compressed_symbol(symbol: Symbol_Drawn, offset: Vector2):
 	for line in symbol.compressed_lines:
 		var previous = null
+		var initial = null
 		for point in line:
+			if initial == null:
+				initial = point
 			if previous != null:
 				draw_line(previous + offset, point + offset, Color.GREEN, width)
 			previous = point
+		if (previous - initial).length() < 2:
+			draw_circle(initial, width, color)
 
 var stored_symbols = []
 var all_sub_paths = []
