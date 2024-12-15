@@ -111,7 +111,7 @@ func _process(_delta):
 		if symbol_to_compare != null and max_matching_ratio < 85:
 			stored_symbols.push_back(symbol_to_compare)
 		symbol_to_compare = null
-		max_matching_ratio = 0
+		max_matching_ratio = 0.0
 		
 		
 	if compare_index != null and symbol_to_compare != null:
