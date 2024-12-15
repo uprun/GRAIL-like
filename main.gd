@@ -95,3 +95,7 @@ func my_draw_sub(sub: Sub_Path):
 func _draw():
 	for sub in all_sub_paths:
 		my_draw_sub(sub)
+
+
+func _on_button_pressed():
+	pass # Replace with function body.
