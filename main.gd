@@ -1,11 +1,9 @@
 extends Node2D
 
 
-var point1 : Vector2 = Vector2(0, 0)
 var width : int = 5
 var color : Color = Color.GREEN
 
-var _point2 : Vector2
 
 var lines = []
 
