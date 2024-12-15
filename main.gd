@@ -101,4 +101,4 @@ func _draw():
 func _on_button_pressed():
 	var drawn_symbol = Symbol_Drawn.new()
 	
-	stored_symbols.push_back()
+	stored_symbols.push_back(drawn_symbol)
