@@ -111,7 +111,8 @@ func _process(_delta):
 		
 	if compare_index != null:
 		var test = stored_symbols[0] as Symbol_Drawn
-		test.compressed
+		for line in symbol_to_compare.compressed_lines
+		test.compressed_lines
 
 
 # Called when the node enters the scene tree for the first time.
@@ -164,7 +165,7 @@ func _on_compare_button_down():
 
 
 var compare_index = null
-var symbol_to_compare = null
+var symbol_to_compare: Symbol_Drawn = null
 
 func _on_compare_pressed():
 	var drawn_symbol = Symbol_Drawn.new()
