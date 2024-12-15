@@ -136,6 +136,9 @@ func _process(_delta):
 	if compare_index != null and symbol_to_compare != null:
 		var test = stored_symbols[compare_index] as Symbol_Drawn
 		
+		var match_ratio = compare_symbols(symbol_to_compare, test)
+		#reverse comparison
+		match_ratio = min(match_ratio, compare_symbols(test, symbol_to_compare))
 		
 		if match_ratio > 85:
 			golden_match[compare_index] = true
