@@ -121,6 +121,7 @@ func _process(_delta):
 					for compare_point in compare_line:
 						if (compare_point - point ).length() < 2.0:
 							matched_points += 1
+						break
 		compare_index += 1
 		print( "match ratio: ", matched_points * 100.0 / total_points)
 
