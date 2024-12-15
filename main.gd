@@ -19,7 +19,7 @@ class Sub_Path:
 	var Intersecting: bool
 	
 class Symbol_Drawn:
-	var Sub_paths: Array
+	var Sub_paths = []
 	
 var all_sub_paths = []
 
