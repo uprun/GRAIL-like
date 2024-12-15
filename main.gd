@@ -15,7 +15,6 @@ var current_line_length = 0
 class Sub_Path:
 	var Start: Vector2
 	var Finish: Vector2
-	var Path_Index: int
 	var Id: int
 	var Intersecting: bool
 	
@@ -39,7 +38,6 @@ func add_sub_path(start, finish):
 	var sub = Sub_Path.new()
 	sub.Start = start
 	sub.Finish = finish
-	sub.Path_Index = len(lines)
 	sub.Id = len(all_sub_paths)
 	sub.Intersecting = false
 	analyze_sub_path(sub)
