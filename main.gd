@@ -108,6 +108,7 @@ func _process(_delta):
 		compare_index = 0
 	if stored_symbols.size() <= compare_index:
 		compare_index = null
+		symbol_to_compare = null
 		
 	if compare_index != null and symbol_to_compare != null:
 		var test = stored_symbols[compare_index] as Symbol_Drawn
