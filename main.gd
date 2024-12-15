@@ -133,3 +133,7 @@ func _on_button_pressed():
 	all_sub_paths = []
 	compress_symbol_drawn(drawn_symbol)
 	stored_symbols.push_back(drawn_symbol)
+
+
+func _on_button_button_down():
+	pass # Replace with function body.
