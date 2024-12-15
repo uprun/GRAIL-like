@@ -171,7 +171,10 @@ func _draw():
 		var symbol = stored_symbols[i]
 		draw_compressed_symbol(symbol, offset, Color.GREEN)
 		if symbol_to_draw_over != null:
-			draw_compressed_symbol(symbol_to_draw_over, offset, Color.MAGENTA)
+			if golden_match[i]:
+				draw_compressed_symbol(symbol_to_draw_over, offset, Color.GOLD)
+			else:
+				draw_compressed_symbol(symbol_to_draw_over, offset, Color.MAGENTA)
 		offset.x += 150
 
 
