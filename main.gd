@@ -118,6 +118,11 @@ func my_draw_sub(sub: Sub_Path):
 func _draw():
 	for sub in all_sub_paths:
 		my_draw_sub(sub)
+		
+	var offset = Vector2(20,20)
+	for symbol in stored_symbols:
+		draw_compressed_symbol(symbol, offset)
+		offset.y += 50
 
 
 func _on_button_pressed():
