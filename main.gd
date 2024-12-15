@@ -54,7 +54,7 @@ func draw_compressed_symbol(symbol: Symbol_Drawn, offset: Vector2):
 				draw_line(previous + offset, point + offset, Color.GREEN, width)
 			previous = point
 		if (previous - initial).length() < 2:
-			draw_circle(initial, width, color)
+			draw_circle(initial + offset, width, color)
 
 var stored_symbols = []
 var all_sub_paths = []
