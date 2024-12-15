@@ -125,6 +125,8 @@ func _process(_delta):
 		compare_index += 1
 		var match_ratio = matched_points * 100.0 / total_points
 		print( "match ratio: ",  match_ratio)
+		if match_ratio < 85:
+			stored_symbols.push_back(symbol_to_compare)
 
 
 # Called when the node enters the scene tree for the first time.
