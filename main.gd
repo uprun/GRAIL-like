@@ -130,4 +130,5 @@ func _on_button_pressed():
 	drawn_symbol.lines = lines
 	lines = []
 	all_sub_paths = []
+	compress_symbol_drawn(drawn_symbol)
 	stored_symbols.push_back(drawn_symbol)
