@@ -21,7 +21,7 @@ class Symbol_Drawn:
 	var compressed_lines = []
 	
 	func prepare_rescaled_lines():
-		var first_line = symbol.lines[0]
+		var first_line = self.lines
 		var top = first_line[0]
 		var bottom = first_line[0]
 		var left = first_line[0]
