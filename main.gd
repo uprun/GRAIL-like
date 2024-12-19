@@ -227,7 +227,6 @@ func _on_compare_pressed():
 		
 		var a = JSON.stringify(drawn_symbol.compressed_lines, "    ")
 		file_access.store_line(a)
-		file_access.store_var(drawn_symbol, true )
 		
 		file_access.close()
 		
