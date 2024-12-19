@@ -218,7 +218,15 @@ func _on_compare_pressed():
 	if drawn_symbol.lines.size() > 0:
 		compress_symbol_drawn(drawn_symbol)
 		print()
+		var save_path := "user://player_data.json"
 		var a = JSON.stringify(drawn_symbol.compressed_lines, "    ")
+		var file_access := FileAccess.open(save_path, FileAccess.WRITE)
+		if not file_access:
+			print("An error happened while saving data: ", FileAccess.get_open_error())
+			return
+
+		file_access.store_line(json_data)
+		file_access.close()
 		var b = JSON.parse_string(a)
 		print ("b after parsing", b)
 		print()
