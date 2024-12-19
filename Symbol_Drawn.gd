@@ -47,6 +47,8 @@ func add_a_lot_of_points_in_between(start: Vector2, finish: Vector2):
 	
 func compare_internal(two: Symbol_Drawn):
 	var one = self
+	
+	var match_ratio = 100.0
 	var matched_points = 0
 	var total_points = 0
 	for line in one.compressed_lines:
