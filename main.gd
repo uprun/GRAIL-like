@@ -38,7 +38,6 @@ func add_sub_path(start, finish):
 	sub.Start = start
 	sub.Finish = finish
 	sub.Id = len(all_sub_paths)
-	sub.Intersecting = false
 	all_sub_paths.push_back(sub)
 
 func _unhandled_input(event):
@@ -110,8 +109,6 @@ func my_draw_polyline(line: Array):
 		
 func my_draw_sub(sub: Sub_Path):
 	var active_color = color
-	if sub.Intersecting:
-		active_color = Color.BLUE
 	if sub.Start.distance_to(sub.Finish) > 1:
 		draw_line(sub.Start, sub.Finish, active_color, width)
 	else:
