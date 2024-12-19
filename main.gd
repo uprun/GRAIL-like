@@ -234,7 +234,7 @@ func _on_compare_pressed():
 		if not file_read:
 			print("An error happened while saving data: ", FileAccess.get_open_error())
 			return
-		var stored_json file_read.get_as_text()
+		var stored_json = file_read.get_as_text()
 		file_read.close()
 		
 		
