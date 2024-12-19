@@ -28,10 +28,10 @@ func prepare_rescaled_lines():
 		for point in line:
 			var x = (point.x - left.x) / scale
 			var y = (point.y - top.y) / scale
-			var point = Vector2(x, y)
+			var to_add = Vector2(x, y)
 			if previous_point == null:
-				previous_point
-			self.compressed_lines.back().push_back(point)
+				previous_point = to_add
+			self.compressed_lines.back().push_back(to_add)
 			
 func compare_internal(two: Symbol_Drawn):
 	var one = self
