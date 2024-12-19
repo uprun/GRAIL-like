@@ -232,7 +232,7 @@ func _on_compare_pressed():
 		
 		var file_read = FileAccess.open(save_path, FileAccess.READ)
 		
-		drawn_symbol= file_read.get_var(true)
+		drawn_symbol = file_read.get_var(true)
 		file_read.close()
 		
 		
