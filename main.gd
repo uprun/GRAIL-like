@@ -136,7 +136,6 @@ func _on_compare_pressed():
 	var drawn_symbol = Symbol_Drawn.new()
 	drawn_symbol.lines = lines
 	lines = []
-	all_sub_paths = []
 	if drawn_symbol.lines.size() > 0:
 		drawn_symbol.prepare_rescaled_lines()
 		print()
