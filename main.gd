@@ -1,5 +1,6 @@
 extends Node2D
 
+preload("res://Sub_Path.gd")
 
 var width : int = 5
 var color : Color = Color.GREEN
