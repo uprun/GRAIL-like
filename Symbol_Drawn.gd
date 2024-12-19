@@ -34,7 +34,7 @@ func prepare_rescaled_lines():
 			self.compressed_lines.back().push_back(to_add)
 		
 	
-func make_a_lot_of_points(start: Vector2, finish: Vector2):
+func add_a_lot_of_points_in_between(start: Vector2, finish: Vector2):
 	var direction = finish - start
 	var length_of_direction = direction.length()
 	if length_of_direction <= 1:
@@ -42,6 +42,7 @@ func make_a_lot_of_points(start: Vector2, finish: Vector2):
 	
 	for i in range(0, length_of_direction, 0.7):
 		var to_add = start + (direction * i / length_of_direction)
+		self.compressed_lines.back().push_back(to_add)
 	
 func compare_internal(two: Symbol_Drawn):
 	var one = self
