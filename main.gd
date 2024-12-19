@@ -25,7 +25,7 @@ class Symbol_Drawn:
 		var top = first_line[0]
 		var bottom = first_line[0]
 		var left = first_line[0]
-		for line in symbol.lines:
+		for line in self.lines:
 			for point in line:
 				if point.y > bottom.y:
 					bottom = point
