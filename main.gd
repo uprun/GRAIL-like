@@ -219,13 +219,14 @@ func _on_compare_pressed():
 		compress_symbol_drawn(drawn_symbol)
 		print()
 		var save_path := "user://player_data.json"
-		var a = JSON.stringify(drawn_symbol.compressed_lines, "    ")
+		
 		var file_access := FileAccess.open(save_path, FileAccess.WRITE)
 		if not file_access:
 			print("An error happened while saving data: ", FileAccess.get_open_error())
 			return
-
-		#file_access.store_line(a)
+		
+		var a = JSON.stringify(drawn_symbol.compressed_lines, "    ")
+		file_access.store_line(a)
 		file_access.store_var(drawn_symbol, true )
 		
 		file_access.close()
@@ -234,7 +235,7 @@ func _on_compare_pressed():
 		if not file_read:
 			print("An error happened while saving data: ", FileAccess.get_open_error())
 			return
-		drawn_symbol = file_read.get_var(true)
+		var stored_json file_read.get_as_text()
 		file_read.close()
 		
 		
