@@ -86,7 +86,7 @@ func _ready():
 
 func my_draw_polyline(line: Array):
 	if len(line) == 0:
-		pass
+		return
 	if len(line) > 1:
 		draw_polyline(line, color, width)
 	else:
