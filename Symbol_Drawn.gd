@@ -36,10 +36,12 @@ func prepare_rescaled_lines():
 	
 func make_a_lot_of_points(start: Vector2, finish: Vector2):
 	var direction = finish - start
-	if direction.length() <= 1:
+	var length_of_direction = direction.length()
+	if length_of_direction <= 1:
 		return
+	
 	var unit_direction = direction.normalized()
-	var 
+	for i in range(0, )
 	
 func compare_internal(two: Symbol_Drawn):
 	var one = self
