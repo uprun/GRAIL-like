@@ -20,28 +20,28 @@ class Symbol_Drawn:
 	var lines = []
 	var compressed_lines = []
 	
-func compress_symbol_drawn(symbol: Symbol_Drawn):
-	var first_line = symbol.lines[0]
-	var top = first_line[0]
-	var bottom = first_line[0]
-	var left = first_line[0]
-	for line in symbol.lines:
-		for point in line:
-			if point.y > bottom.y:
-				bottom = point
-			if point.y < top.y:
-				top = point
-			if point.x < left.x:
-				left = point
-	print("center left.x: ", left.x, " top.y: ", top.y, " bottom.y: ", bottom.y)
-	var scale = (bottom.y - top.y) / 40.0 
-	print("scale :", scale)
-	for line in symbol.lines:
-		symbol.compressed_lines.push_back([])
-		for point in line:
-			var x = (point.x - left.x) / scale
-			var y = (point.y - top.y) / scale
-			symbol.compressed_lines.back().push_back(Vector2(x, y))
+	func compress_symbol_drawn(symbol: Symbol_Drawn):
+		var first_line = symbol.lines[0]
+		var top = first_line[0]
+		var bottom = first_line[0]
+		var left = first_line[0]
+		for line in symbol.lines:
+			for point in line:
+				if point.y > bottom.y:
+					bottom = point
+				if point.y < top.y:
+					top = point
+				if point.x < left.x:
+					left = point
+		print("center left.x: ", left.x, " top.y: ", top.y, " bottom.y: ", bottom.y)
+		var scale = (bottom.y - top.y) / 40.0 
+		print("scale :", scale)
+		for line in symbol.lines:
+			symbol.compressed_lines.push_back([])
+			for point in line:
+				var x = (point.x - left.x) / scale
+				var y = (point.y - top.y) / scale
+				symbol.compressed_lines.back().push_back(Vector2(x, y))
 
 func draw_compressed_symbol(symbol: Symbol_Drawn, offset: Vector2, color):
 	for line in symbol.compressed_lines:
