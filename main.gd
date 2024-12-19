@@ -232,6 +232,8 @@ func _on_compare_pressed():
 		OS.shell_show_in_file_manager(global_path)
 		
 		var b = JSON.parse_string(a)
+		
+		drawn_symbol.compressed_lines = b
 		print ("b after parsing", b)
 		print()
 		symbol_to_compare = drawn_symbol
