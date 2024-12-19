@@ -91,22 +91,12 @@ func my_draw_polyline(line: Array):
 		draw_polyline(line, color, width)
 	else:
 		draw_circle(line.back(), width, color)
-		
-func my_draw_sub(sub: Sub_Path):
-	var active_color = color
-	if sub.Start.distance_to(sub.Finish) > 1:
-		draw_line(sub.Start, sub.Finish, active_color, width)
-	else:
-		draw_circle(sub.Start, width, active_color)
 
 func _draw():
 	for line in lines:
-		if len(line) > 1:
-			draw_polyline(line, color, width)
-		else:
-			draw_circle(line[0], width, color)
-	for sub in all_sub_paths:
-		my_draw_sub(sub)
+		my_draw_polyline(line)
+	
+	my_draw_polyline(current_line)
 		
 	var offset = Vector2(50,120)
 	for i in len(stored_symbols):
