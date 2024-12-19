@@ -37,7 +37,6 @@ func add_sub_path(start, finish):
 	var sub = Sub_Path.new()
 	sub.Start = start
 	sub.Finish = finish
-	sub.Id = len(all_sub_paths)
 	all_sub_paths.push_back(sub)
 
 func _unhandled_input(event):
