@@ -227,6 +227,7 @@ func _on_compare_pressed():
 
 		file_access.store_line(a)
 		file_access.close()
+		
 		var b = JSON.parse_string(a)
 		print ("b after parsing", b)
 		print()
