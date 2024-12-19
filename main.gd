@@ -65,19 +65,7 @@ func _unhandled_input(event):
 var golden_match = []
 
 
-func compare_symbols(one, two):
-	var matched_points = 0
-	var total_points = 0
-	for line in one.compressed_lines:
-		for point in line:
-			total_points += 1
-			for compare_line in two.compressed_lines:
-				for compare_point in compare_line:
-					if (compare_point - point ).length() < 2.0:
-						matched_points += 1
-						break
-	var match_ratio = matched_points * 100.0 / total_points
-	return match_ratio
+
 
 
 func _process(_delta):

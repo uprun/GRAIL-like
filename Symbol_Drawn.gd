@@ -25,3 +25,17 @@ func prepare_rescaled_lines():
 			var x = (point.x - left.x) / scale
 			var y = (point.y - top.y) / scale
 			self.compressed_lines.back().push_back(Vector2(x, y))
+			
+func compare_internal(one: Symbol_Drawn, two: Symbol_Drawn):
+	var matched_points = 0
+	var total_points = 0
+	for line in one.compressed_lines:
+		for point in line:
+			total_points += 1
+			for compare_line in two.compressed_lines:
+				for compare_point in compare_line:
+					if (compare_point - point ).length() < 2.0:
+						matched_points += 1
+						break
+	var match_ratio = matched_points * 100.0 / total_points
+	return match_ratio
