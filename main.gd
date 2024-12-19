@@ -31,30 +31,16 @@ func draw_compressed_symbol(symbol: Symbol_Drawn, offset: Vector2, color):
 			draw_circle(initial + offset, width, color)
 
 var stored_symbols = []
-var all_sub_paths = []
-
-func add_sub_path(start, finish):
-	var sub = Sub_Path.new()
-	sub.Start = start
-	sub.Finish = finish
-	all_sub_paths.push_back(sub)
 
 func _unhandled_input(event):
 	var mouse_position = get_viewport().get_mouse_position()
 	if Input.is_mouse_button_pressed( 1 ):
 		if current_line.is_empty():
-			
-			current_line_length = 0
-			add_sub_path(mouse_position, mouse_position)
 			current_line.push_back(mouse_position)
 		else:
 			var last_point = current_line.back()
 			if mouse_position != last_point:
 				current_line.push_back(mouse_position)
-				add_sub_path(last_point, mouse_position)
-				var dist  = last_point.distance_to(mouse_position)
-				current_line_length += dist
-				
 	else:
 		if not current_line.is_empty():
 			lines.push_back(current_line)
