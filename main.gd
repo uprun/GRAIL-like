@@ -225,8 +225,10 @@ func _on_compare_pressed():
 			print("An error happened while saving data: ", FileAccess.get_open_error())
 			return
 
-		file_access.store_line(a)
+		#file_access.store_line(a)
 		file_access.close()
+		
+		file_access.store_var()
 		
 		var global_path = ProjectSettings.globalize_path(save_path)
 		OS.shell_show_in_file_manager(global_path)
