@@ -145,7 +145,7 @@ func my_draw_polyline(line: Array):
 	else:
 		draw_circle(line.back(), width, color)
 		
-func my_draw_sub(sub: Sub_Path):
+func my_draw_sub(sub: Sub_Path.Sub_Path):
 	var active_color = color
 	if sub.Intersecting:
 		active_color = Color.BLUE
