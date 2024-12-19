@@ -31,6 +31,7 @@ func prepare_rescaled_lines():
 			var to_add = Vector2(x, y)
 			if previous_point == null:
 				previous_point = to_add
+			self.add_a_lot_of_points_in_between(previous_point, to_add)
 			self.compressed_lines.back().push_back(to_add)
 		
 	
