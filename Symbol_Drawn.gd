@@ -41,7 +41,7 @@ func make_a_lot_of_points(start: Vector2, finish: Vector2):
 		return
 	
 	var unit_direction = direction.normalized()
-	for i in range(0, )
+	for i in range(0, length_of_direction, 0.7)
 	
 func compare_internal(two: Symbol_Drawn):
 	var one = self
