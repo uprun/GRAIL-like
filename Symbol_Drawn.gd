@@ -41,7 +41,7 @@ func add_a_lot_of_points_in_between(start: Vector2, finish: Vector2):
 	if length_of_direction <= 1:
 		return
 	
-	for i in range(0, length_of_direction, 0.7):
+	for i in range(0, length_of_direction, 1):
 		var to_add = start + (direction * i / length_of_direction)
 		self.compressed_lines.back().push_back(to_add)
 	
