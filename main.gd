@@ -226,7 +226,7 @@ func _on_compare_pressed():
 			return
 
 		#file_access.store_line(a)
-		file_access.store_var(drawn_symbol )
+		file_access.store_var(drawn_symbol, true )
 		
 		file_access.close()
 		
