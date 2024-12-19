@@ -32,7 +32,13 @@ func prepare_rescaled_lines():
 			if previous_point == null:
 				previous_point = to_add
 			self.compressed_lines.back().push_back(to_add)
-			
+		
+	
+func make_a_lot_of_points(start: Vector2, finish: Vector2):
+	var direction = finish - start
+	var unit_direction = direction.normalized()
+	var 
+	
 func compare_internal(two: Symbol_Drawn):
 	var one = self
 	var matched_points = 0
