@@ -43,7 +43,7 @@ func compare_internal(two: Symbol_Drawn):
 	
 
 func compare(two: Symbol_Drawn):
-	var match_ratio = self.compare_internal(self, two)
+	var match_ratio = self.compare_internal( two)
 	#reverse comparison
 	match_ratio = min(match_ratio, two.compare_internal(self))
 	return match_ratio
