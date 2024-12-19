@@ -84,7 +84,7 @@ func _process(_delta):
 	if compare_index != null and symbol_to_compare != null:
 		var test = stored_symbols[compare_index] as Symbol_Drawn
 		
-		var match_ratio = symbol_to_compare.compare(test)
+		var match_ratio = symbol_to_compare.double_compare(test)
 		
 		if match_ratio > 85:
 			golden_match[compare_index] = true
