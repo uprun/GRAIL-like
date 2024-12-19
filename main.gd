@@ -225,7 +225,7 @@ func _on_compare_pressed():
 			print("An error happened while saving data: ", FileAccess.get_open_error())
 			return
 
-		file_access.store_line(json_data)
+		file_access.store_line(a)
 		file_access.close()
 		var b = JSON.parse_string(a)
 		print ("b after parsing", b)
