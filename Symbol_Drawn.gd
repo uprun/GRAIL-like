@@ -36,6 +36,8 @@ func prepare_rescaled_lines():
 	
 func make_a_lot_of_points(start: Vector2, finish: Vector2):
 	var direction = finish - start
+	if direction.length() <= 1:
+		return
 	var unit_direction = direction.normalized()
 	var 
 	
