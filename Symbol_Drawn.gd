@@ -49,9 +49,10 @@ func compare_internal(two: Symbol_Drawn):
 	var one = self
 	
 	var match_ratio = 100.0
-	var matched_points = 0
-	var total_points = 0
+	
 	for line in one.compressed_lines:
+		var matched_points = 0
+		var total_points = 0
 		for point in line:
 			total_points += 1
 			for compare_line in two.compressed_lines:
