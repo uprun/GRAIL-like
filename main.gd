@@ -10,11 +10,7 @@ var lines = []
 var current_line = []
 var current_line_length = 0
 
-class Sub_Path:
-	var Start: Vector2
-	var Finish: Vector2
-	var Id: int
-	var Intersecting: bool
+
 	
 class Symbol_Drawn:
 	var lines = []
