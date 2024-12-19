@@ -180,7 +180,6 @@ func _on_button_pressed():
 	all_sub_paths = []
 	if drawn_symbol.lines.size() > 0:
 		drawn_symbol.prepare_rescaled_lines()
-		compress_symbol_drawn(drawn_symbol)
 		stored_symbols.push_back(drawn_symbol)
 		golden_match.push_back(false)
 
@@ -203,7 +202,7 @@ func _on_compare_pressed():
 	lines = []
 	all_sub_paths = []
 	if drawn_symbol.lines.size() > 0:
-		compress_symbol_drawn(drawn_symbol)
+		drawn_symbol.prepare_rescaled_lines()
 		print()
 		var save_path := "user://player_data.json"
 		
