@@ -236,7 +236,6 @@ func _on_compare_pressed():
 		
 		print ("b after parsing", b)
 		print()
-		drawn_symbol.compressed_lines = b
 		symbol_to_compare = drawn_symbol
 		symbol_to_draw_over = drawn_symbol
 		compare_index = null
