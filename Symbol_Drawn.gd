@@ -20,7 +20,7 @@ func prepare_rescaled_lines():
 	var height = (bottom.y - top.y)
 	var scale =  1.0 
 	if (height > 40):
-		scale = height/ 40.0 
+		scale = height / 40.0 
 	print("scale :", scale)
 	for line in self.lines:
 		self.compressed_lines.push_back([])
