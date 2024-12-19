@@ -100,6 +100,11 @@ func my_draw_sub(sub: Sub_Path):
 		draw_circle(sub.Start, width, active_color)
 
 func _draw():
+	for line in lines:
+		if len(line) > 1:
+			draw_polyline(line, color, width)
+		else:
+			draw_circle(line[0], width, active_color)
 	for sub in all_sub_paths:
 		my_draw_sub(sub)
 		
