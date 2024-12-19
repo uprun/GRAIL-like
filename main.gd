@@ -230,16 +230,13 @@ func _on_compare_pressed():
 		
 		file_access.close()
 		
+		file_read = FileAccess.open(save_path)
+		
 		
 		
 		var global_path = ProjectSettings.globalize_path(save_path)
 		OS.shell_show_in_file_manager(global_path)
 		
-		var b = JSON.parse_string(a)
-		
-		
-		print ("b after parsing", b)
-		print()
 		symbol_to_compare = drawn_symbol
 		symbol_to_draw_over = drawn_symbol
 		compare_index = null
