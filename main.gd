@@ -220,7 +220,7 @@ func _on_compare_pressed():
 		print()
 		var a = JSON.stringify(drawn_symbol.compressed_lines)
 		var b = JSON.parse_string(a)
-		print (b)
+		print ("b after parsing", b)
 		print()
 		symbol_to_compare = drawn_symbol
 		symbol_to_draw_over = drawn_symbol
