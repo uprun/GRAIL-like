@@ -17,7 +17,10 @@ func prepare_rescaled_lines():
 			if point.x < left.x:
 				left = point
 	print("center left.x: ", left.x, " top.y: ", top.y, " bottom.y: ", bottom.y)
-	var scale = (bottom.y - top.y) / 40.0 
+	var height = (bottom.y - top.y)
+	var scale =  1.0 
+	if (height > 40):
+		scale = height/ 40.0 
 	print("scale :", scale)
 	for line in self.lines:
 		self.compressed_lines.push_back([])
