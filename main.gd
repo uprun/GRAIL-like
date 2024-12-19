@@ -218,7 +218,7 @@ func _on_compare_pressed():
 	if drawn_symbol.lines.size() > 0:
 		compress_symbol_drawn(drawn_symbol)
 		print()
-		var a = JSON.stringify(drawn_symbol.compressed_lines)
+		var a = JSON.stringify(drawn_symbol.compressed_lines, indent: "    ")
 		var b = JSON.parse_string(a)
 		print ("b after parsing", b)
 		print()
