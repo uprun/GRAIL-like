@@ -226,9 +226,10 @@ func _on_compare_pressed():
 			return
 
 		#file_access.store_line(a)
+		file_access.store_var(drawn_symbol)
 		file_access.close()
 		
-		file_access.store_var()
+		
 		
 		var global_path = ProjectSettings.globalize_path(save_path)
 		OS.shell_show_in_file_manager(global_path)
