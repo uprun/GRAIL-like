@@ -61,6 +61,7 @@ func compare_internal(two: Symbol_Drawn):
 						matched_points += 1
 						break
 		var sub_match_ratio = matched_points * 100.0 / total_points
+		match_ratio = min(match_ratio, sub_match_ratio)
 	return match_ratio
 	
 
