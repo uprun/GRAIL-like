@@ -60,7 +60,7 @@ func compare_internal(two: Symbol_Drawn):
 					if (compare_point - point ).length() < 2.0:
 						matched_points += 1
 						break
-	var match_ratio = matched_points * 100.0 / total_points
+		var sub_match_ratio = matched_points * 100.0 / total_points
 	return match_ratio
 	
 
