@@ -59,20 +59,6 @@ func draw_compressed_symbol(symbol: Symbol_Drawn, offset: Vector2, color):
 var stored_symbols = []
 var all_sub_paths = []
 
-func are_intersecting(first: Sub_Path, second: Sub_Path):
-	if abs(first.Id - second.Id) < 10:
-		return false
-	return first.Start.distance_to(second.Start) < 20
-
-func analyze_sub_path(sub: Sub_Path):
-	for s in all_sub_paths:
-		var c =  s as Sub_Path
-		if c.Id == sub.Id:
-			continue
-		if are_intersecting(c, sub):
-			c.Intersecting = true
-			sub.Intersecting = true
-
 func add_sub_path(start, finish):
 	var sub = Sub_Path.new()
 	sub.Start = start
