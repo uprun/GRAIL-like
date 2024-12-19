@@ -29,6 +29,8 @@ func prepare_rescaled_lines():
 			var x = (point.x - left.x) / scale
 			var y = (point.y - top.y) / scale
 			var point = Vector2(x, y)
+			if previous_point == null:
+				previous_point
 			self.compressed_lines.back().push_back(point)
 			
 func compare_internal(two: Symbol_Drawn):
