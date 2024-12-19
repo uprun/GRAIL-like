@@ -1,3 +1,5 @@
+extends Object
+
 class Sub_Path:
 	var Start: Vector2
 	var Finish: Vector2
