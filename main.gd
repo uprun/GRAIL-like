@@ -114,7 +114,6 @@ func _on_button_pressed():
 	var drawn_symbol = Symbol_Drawn.new()
 	drawn_symbol.lines = lines
 	lines = []
-	all_sub_paths = []
 	if drawn_symbol.lines.size() > 0:
 		drawn_symbol.prepare_rescaled_lines()
 		stored_symbols.push_back(drawn_symbol)
