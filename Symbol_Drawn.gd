@@ -4,7 +4,7 @@ var lines = []
 var compressed_lines = []
 
 func prepare_rescaled_lines():
-	var first_line = self.lines
+	var first_line = self.lines[0]
 	var top = first_line[0]
 	var bottom = first_line[0]
 	var left = first_line[0]
