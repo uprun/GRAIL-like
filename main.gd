@@ -1,6 +1,9 @@
 extends Node2D
 
 
+const Sub_Path = preload("res://Sub_Path.gd")
+const Symbol_Drawn = preload("res://Symbol_Drawn.gd")
+
 var width : int = 5
 var color : Color = Color.GREEN
 
@@ -10,38 +13,9 @@ var lines = []
 var current_line = []
 var current_line_length = 0
 
-class Sub_Path:
-	var Start: Vector2
-	var Finish: Vector2
-	var Id: int
-	var Intersecting: bool
+
 	
-class Symbol_Drawn:
-	var lines = []
-	var compressed_lines = []
-	
-func compress_symbol_drawn(symbol: Symbol_Drawn):
-	var first_line = symbol.lines[0]
-	var top = first_line[0]
-	var bottom = first_line[0]
-	var left = first_line[0]
-	for line in symbol.lines:
-		for point in line:
-			if point.y > bottom.y:
-				bottom = point
-			if point.y < top.y:
-				top = point
-			if point.x < left.x:
-				left = point
-	print("center left.x: ", left.x, " top.y: ", top.y, " bottom.y: ", bottom.y)
-	var scale = (bottom.y - top.y) / 40.0 
-	print("scale :", scale)
-	for line in symbol.lines:
-		symbol.compressed_lines.push_back([])
-		for point in line:
-			var x = (point.x - left.x) / scale
-			var y = (point.y - top.y) / scale
-			symbol.compressed_lines.back().push_back(Vector2(x, y))
+
 
 func draw_compressed_symbol(symbol: Symbol_Drawn, offset: Vector2, color):
 	for line in symbol.compressed_lines:
@@ -58,20 +32,6 @@ func draw_compressed_symbol(symbol: Symbol_Drawn, offset: Vector2, color):
 
 var stored_symbols = []
 var all_sub_paths = []
-
-func are_intersecting(first: Sub_Path, second: Sub_Path):
-	if abs(first.Id - second.Id) < 10:
-		return false
-	return first.Start.distance_to(second.Start) < 20
-
-func analyze_sub_path(sub: Sub_Path):
-	for s in all_sub_paths:
-		var c =  s as Sub_Path
-		if c.Id == sub.Id:
-			continue
-		if are_intersecting(c, sub):
-			c.Intersecting = true
-			sub.Intersecting = true
 
 func add_sub_path(start, finish):
 	var sub = Sub_Path.new()
@@ -105,19 +65,7 @@ func _unhandled_input(event):
 var golden_match = []
 
 
-func compare_symbols(one, two):
-	var matched_points = 0
-	var total_points = 0
-	for line in one.compressed_lines:
-		for point in line:
-			total_points += 1
-			for compare_line in two.compressed_lines:
-				for compare_point in compare_line:
-					if (compare_point - point ).length() < 2.0:
-						matched_points += 1
-						break
-	var match_ratio = matched_points * 100.0 / total_points
-	return match_ratio
+
 
 
 func _process(_delta):
@@ -136,9 +84,7 @@ func _process(_delta):
 	if compare_index != null and symbol_to_compare != null:
 		var test = stored_symbols[compare_index] as Symbol_Drawn
 		
-		var match_ratio = compare_symbols(symbol_to_compare, test)
-		#reverse comparison
-		match_ratio = min(match_ratio, compare_symbols(test, symbol_to_compare))
+		var match_ratio = symbol_to_compare.double_compare(test)
 		
 		if match_ratio > 85:
 			golden_match[compare_index] = true
@@ -193,7 +139,7 @@ func _on_button_pressed():
 	lines = []
 	all_sub_paths = []
 	if drawn_symbol.lines.size() > 0:
-		compress_symbol_drawn(drawn_symbol)
+		drawn_symbol.prepare_rescaled_lines()
 		stored_symbols.push_back(drawn_symbol)
 		golden_match.push_back(false)
 
@@ -216,7 +162,33 @@ func _on_compare_pressed():
 	lines = []
 	all_sub_paths = []
 	if drawn_symbol.lines.size() > 0:
-		compress_symbol_drawn(drawn_symbol)
+		drawn_symbol.prepare_rescaled_lines()
+		print()
+		var save_path := "user://player_data.json"
+		
+		var file_access := FileAccess.open(save_path, FileAccess.WRITE)
+		if not file_access:
+			print("An error happened while saving data: ", FileAccess.get_open_error())
+			return
+		
+		var a = JSON.stringify(drawn_symbol.compressed_lines, "    ")
+		file_access.store_line(a)
+		
+		file_access.close()
+		
+		var file_read = FileAccess.open(save_path, FileAccess.READ)
+		if not file_read:
+			print("An error happened while saving data: ", FileAccess.get_open_error())
+			return
+		var stored_json = file_read.get_as_text()
+		file_read.close()
+		
+		
+		
+		
+		var global_path = ProjectSettings.globalize_path(save_path)
+		#OS.shell_show_in_file_manager(global_path)
+		
 		symbol_to_compare = drawn_symbol
 		symbol_to_draw_over = drawn_symbol
 		compare_index = null
