@@ -230,7 +230,7 @@ func _on_compare_pressed():
 		
 		file_access.close()
 		
-		file_read = FileAccess.open(save_path)
+		file_read = FileAccess.open(save_path, FileAccess.READ)
 		
 		
 		
