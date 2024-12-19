@@ -1,7 +1,7 @@
 extends Node2D
 
 
-const Sub_Path = preload("res://Sub_Path.gd").Sub_Path
+const Sub_Path = preload("res://Sub_Path.gd")
 
 var width : int = 5
 var color : Color = Color.GREEN
