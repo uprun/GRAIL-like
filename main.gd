@@ -104,7 +104,7 @@ func _draw():
 		if len(line) > 1:
 			draw_polyline(line, color, width)
 		else:
-			draw_circle(line[0], width, active_color)
+			draw_circle(line[0], width, color)
 	for sub in all_sub_paths:
 		my_draw_sub(sub)
 		
