@@ -36,12 +36,12 @@ class Symbol_Drawn:
 		print("center left.x: ", left.x, " top.y: ", top.y, " bottom.y: ", bottom.y)
 		var scale = (bottom.y - top.y) / 40.0 
 		print("scale :", scale)
-		for line in symbol.lines:
-			symbol.compressed_lines.push_back([])
+		for line in self.lines:
+			self.compressed_lines.push_back([])
 			for point in line:
 				var x = (point.x - left.x) / scale
 				var y = (point.y - top.y) / scale
-				symbol.compressed_lines.back().push_back(Vector2(x, y))
+				self.compressed_lines.back().push_back(Vector2(x, y))
 
 func draw_compressed_symbol(symbol: Symbol_Drawn, offset: Vector2, color):
 	for line in symbol.compressed_lines:
