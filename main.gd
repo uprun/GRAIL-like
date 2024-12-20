@@ -58,8 +58,10 @@ func _process(_delta):
 	if stored_symbols.size() <= compare_index:
 		compare_index = null
 		if symbol_to_compare != null and max_matching_ratio < 85:
+			store_symbol_to_file(symbol_to_compare)
 			stored_symbols.push_back(symbol_to_compare)
 			golden_match.push_back(false)
+			
 		symbol_to_compare = null
 		max_matching_ratio = 0.0
 		
@@ -106,30 +108,30 @@ func _draw():
 			else:
 				draw_compressed_symbol(symbol_to_draw_over, offset, Color.MAGENTA)
 		offset.x += 150
-		
-	offset = Vector2(50,200)
-	for i in len(restored_symbols):
-		var symbol = restored_symbols[i]
-		draw_compressed_symbol(symbol, offset, Color.CORAL)
-		offset.x += 150
 
-
-func _on_button_pressed():
-	var drawn_symbol = Symbol_Drawn.new()
-	drawn_symbol.lines = lines
-	lines = []
-	if drawn_symbol.lines.size() > 0:
-		drawn_symbol.prepare_rescaled_lines()
-		stored_symbols.push_back(drawn_symbol)
-		golden_match.push_back(false)
-
-
-func _on_button_button_down():
-	pass # Replace with function body.
 
 
 func _on_compare_button_down():
 	pass # Replace with function body.
+
+func store_symbol_to_file(the_symbol: Symbol_Drawn):
+	var str: String
+	str = $TextEdit.text
+	var num = len(stored_symbols)
+	var str_num = String.num_int64(num).pad_zeros(3)
+	var path = "user://symbols/" + str + "/" + str_num + ".json"
+	
+	var file_access := FileAccess.open(path, FileAccess.WRITE)
+	if not file_access:
+		print("An error happened while saving data: ", FileAccess.get_open_error())
+		return
+	
+	var a = JSON.stringify(the_symbol.prepare_stored(), "    ")
+	file_access.store_line(a)
+	
+	file_access.close()
+	var global_path = ProjectSettings.globalize_path(path)
+	#OS.shell_show_in_file_manager(global_path)
 
 
 var compare_index = null
@@ -143,39 +145,32 @@ func _on_compare_pressed():
 	if drawn_symbol.lines.size() > 0:
 		drawn_symbol.prepare_rescaled_lines()
 		print()
-		var save_path := "user://player_data.json"
 		
-		var file_access := FileAccess.open(save_path, FileAccess.WRITE)
-		if not file_access:
-			print("An error happened while saving data: ", FileAccess.get_open_error())
-			return
-		
-		var a = JSON.stringify(drawn_symbol.prepare_stored(), "    ")
-		file_access.store_line(a)
-		
-		file_access.close()
-		
-		var file_read = FileAccess.open(save_path, FileAccess.READ)
+		symbol_to_compare = drawn_symbol
+		symbol_to_draw_over = drawn_symbol
+		compare_index = null
+
+
+func _on_text_edit_text_changed():
+	symbol_to_compare = null
+	stored_symbols = []
+	if $TextEdit.text.length() == 0:
+		return
+	var str: String
+	str = $TextEdit.text
+	var path = "user://symbols/" + str + "/"
+	if (DirAccess.dir_exists_absolute(path) == false):
+		DirAccess.make_dir_recursive_absolute(path)
+	var opened_dir = DirAccess.open(path)
+	for file in opened_dir.get_files():
+		var file_read = FileAccess.open(path + file, FileAccess.READ)
 		if not file_read:
 			print("An error happened while saving data: ", FileAccess.get_open_error())
 			return
 		var stored_json = file_read.get_as_text()
 		file_read.close()
-		
-		
 		var stored_dictionary = JSON.parse_string(stored_json)
 		var single_restored_symbol = Symbol_Drawn.new()
 		single_restored_symbol.restore_from_save(stored_dictionary)
-		
-		restored_symbols.push_back(single_restored_symbol)
-		
-		
-		
-		
-		
-		var global_path = ProjectSettings.globalize_path(save_path)
-		OS.shell_show_in_file_manager(global_path)
-		
-		symbol_to_compare = drawn_symbol
-		symbol_to_draw_over = drawn_symbol
-		compare_index = null
+		stored_symbols.push_back(single_restored_symbol)
+		golden_match.push_back(false)
