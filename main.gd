@@ -157,6 +157,9 @@ func _on_compare_pressed():
 		
 		
 		var stored_dictionary = JSON.parse_string(stored_json)
+		var restored_symbol = Symbol_Drawn.new()
+		restored_symbol.restore_from_save(stored_dictionary)
+		
 		
 		
 		
