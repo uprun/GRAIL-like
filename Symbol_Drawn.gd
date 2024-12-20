@@ -25,10 +25,10 @@ func prepare_stored():
 	
 func restore_from_save(dictionary):
 	var stored_lines = dictionary["lines"]
-	for line in lines:
-		to_store_lines.push_back([])
+	for line in stored_lines:
+		lines.push_back([])
 		for point in line:
-			to_store_lines.back().push_back({"x": point.x, "y": point.y})
+			lines.back().push_back(Vector2(point["x"], point["y"]))
 	
 
 func prepare_rescaled_lines():
