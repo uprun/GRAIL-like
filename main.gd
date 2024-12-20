@@ -148,7 +148,7 @@ func _on_compare_pressed():
 		#var single_restored_symbol = Symbol_Drawn.new()
 		#single_restored_symbol.restore_from_save(stored_dictionary)
 		
-		print("text from label", $TextEdit.text)
+		print("text from label: ", $TextEdit.text)
 		
 		
 		
@@ -160,3 +160,7 @@ func _on_compare_pressed():
 		symbol_to_compare = drawn_symbol
 		symbol_to_draw_over = drawn_symbol
 		compare_index = null
+
+
+func _on_text_edit_text_changed():
+	pass # Replace with function body.
