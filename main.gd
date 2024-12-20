@@ -156,6 +156,8 @@ func _on_compare_pressed():
 		file_read.close()
 		
 		
+		JSON.parse_string(stored_json)
+		
 		
 		
 		var global_path = ProjectSettings.globalize_path(save_path)
