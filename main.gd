@@ -29,6 +29,7 @@ func draw_compressed_symbol(symbol: Symbol_Drawn, offset: Vector2, color):
 			draw_circle(initial + offset, width, color)
 
 var stored_symbols = []
+var restored_symbols = []
 
 func _unhandled_input(event):
 	var mouse_position = get_viewport().get_mouse_position()
@@ -160,7 +161,7 @@ func _on_compare_pressed():
 		var restored_symbol = Symbol_Drawn.new()
 		restored_symbol.restore_from_save(stored_dictionary)
 		
-		draw_compressed_symbol(restored_symbol, Vector2(50, 200), Color.CORAL)
+		
 		
 		
 		
