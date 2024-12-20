@@ -23,6 +23,9 @@ func prepare_stored():
 	dictionary["class_definition_as_of_date"] = "2024-12-20--16h57m"
 	return dictionary
 	
+func restore_from_save(dictionary):
+	
+	
 
 func prepare_rescaled_lines():
 	var first_line = self.lines[0]
