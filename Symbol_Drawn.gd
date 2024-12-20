@@ -5,6 +5,16 @@ var compressed_lines = []
 
 func prepare_stored():
 	var dictionary = {}
+	var to_store_lines = []
+	for line in lines:
+		to_store_lines.push_back([])
+		for point in line:
+			to_store_lines.back().push_back({"x": point.x, "y": point.y})
+		dictionary
+		
+	dictionary["lines"] = []
+	dictionary["compressed_lines"] = []
+	
 
 func prepare_rescaled_lines():
 	var first_line = self.lines[0]
