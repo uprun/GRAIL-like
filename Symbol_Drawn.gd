@@ -23,6 +23,19 @@ func prepare_stored():
 	dictionary["class_definition_as_of_date"] = "2024-12-20--16h57m"
 	return dictionary
 	
+func restore_from_save(dictionary):
+	var stored_lines = dictionary["lines"]
+	for line in stored_lines:
+		lines.push_back([])
+		for point in line:
+			lines.back().push_back(Vector2(point["x"], point["y"]))
+	
+	var stored_compressed_lines = dictionary["compressed_lines"]
+	for line in stored_compressed_lines:
+		compressed_lines.push_back([])
+		for point in line:
+			compressed_lines.back().push_back(Vector2(point["x"], point["y"]))
+	
 
 func prepare_rescaled_lines():
 	var first_line = self.lines[0]
