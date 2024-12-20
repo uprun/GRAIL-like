@@ -60,6 +60,7 @@ func _process(_delta):
 		if symbol_to_compare != null and max_matching_ratio < 85:
 			stored_symbols.push_back(symbol_to_compare)
 			golden_match.push_back(false)
+			store_symbol(symbol_to_compare)
 		symbol_to_compare = null
 		max_matching_ratio = 0.0
 		
@@ -112,7 +113,7 @@ func _draw():
 func _on_compare_button_down():
 	pass # Replace with function body.
 
-func store_symbol(the_symbol: Symbol_Drawn):
+func store_symbol_to_file(the_symbol: Symbol_Drawn):
 	var str: String
 	str = $TextEdit.text
 	var num = len(stored_symbols)
@@ -128,6 +129,8 @@ func store_symbol(the_symbol: Symbol_Drawn):
 	file_access.store_line(a)
 	
 	file_access.close()
+	var global_path = ProjectSettings.globalize_path(path)
+	#OS.shell_show_in_file_manager(global_path)
 
 
 var compare_index = null
@@ -141,16 +144,6 @@ func _on_compare_pressed():
 	if drawn_symbol.lines.size() > 0:
 		drawn_symbol.prepare_rescaled_lines()
 		print()
-		
-		
-		print("text from label: ", $TextEdit.text)
-		
-		
-		
-		
-		
-		var global_path = ProjectSettings.globalize_path(path)
-		#OS.shell_show_in_file_manager(global_path)
 		
 		symbol_to_compare = drawn_symbol
 		symbol_to_draw_over = drawn_symbol
