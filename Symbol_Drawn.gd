@@ -20,6 +20,7 @@ func prepare_stored():
 			to_store_compressed_lines.back().push_back({"x": point.x, "y": point.y})
 	dictionary["compressed_lines"] = to_store_compressed_lines
 	dictionary["class_name"] = "Symbol_Drawn"
+	dictionary["class_definition_as_of_date"] = "2024-12-20--16h57m"
 	return dictionary
 	
 
