@@ -129,9 +129,8 @@ func _on_compare_pressed():
 		var num = len(stored_symbols)
 		var str_num = String.num_int64(num).pad_zeros(3)
 		var path = "user://symbols/" + str + "/" + str_num + ".json"
-		var save_path := "user://player_data.json"
 		
-		var file_access := FileAccess.open(save_path, FileAccess.WRITE)
+		var file_access := FileAccess.open(path, FileAccess.WRITE)
 		if not file_access:
 			print("An error happened while saving data: ", FileAccess.get_open_error())
 			return
@@ -147,7 +146,7 @@ func _on_compare_pressed():
 		
 		
 		
-		var global_path = ProjectSettings.globalize_path(save_path)
+		var global_path = ProjectSettings.globalize_path(path)
 		#OS.shell_show_in_file_manager(global_path)
 		
 		symbol_to_compare = drawn_symbol
