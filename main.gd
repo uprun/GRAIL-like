@@ -124,6 +124,11 @@ func _on_compare_pressed():
 	if drawn_symbol.lines.size() > 0:
 		drawn_symbol.prepare_rescaled_lines()
 		print()
+		var str: String
+		str = $TextEdit.text
+		var num = len(stored_symbols)
+		
+		var path = "user://symbols/" + str + "/" + 
 		var save_path := "user://player_data.json"
 		
 		var file_access := FileAccess.open(save_path, FileAccess.WRITE)
