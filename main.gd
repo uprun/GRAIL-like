@@ -148,7 +148,7 @@ func _on_compare_pressed():
 		#var single_restored_symbol = Symbol_Drawn.new()
 		#single_restored_symbol.restore_from_save(stored_dictionary)
 		
-		print("text from label", $compare.text)
+		print("text from label", $TextEdit.text)
 		
 		
 		
