@@ -106,6 +106,11 @@ func _draw():
 			else:
 				draw_compressed_symbol(symbol_to_draw_over, offset, Color.MAGENTA)
 		offset.x += 150
+		
+	offset = Vector2(50,200)
+	for i in len(restored_symbols):
+		var symbol = restored_symbols[i]
+		draw_compressed_symbol(symbol)
 
 
 func _on_button_pressed():
