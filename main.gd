@@ -114,19 +114,6 @@ func _draw():
 		offset.x += 150
 
 
-func _on_button_pressed():
-	var drawn_symbol = Symbol_Drawn.new()
-	drawn_symbol.lines = lines
-	lines = []
-	if drawn_symbol.lines.size() > 0:
-		drawn_symbol.prepare_rescaled_lines()
-		stored_symbols.push_back(drawn_symbol)
-		golden_match.push_back(false)
-
-
-func _on_button_button_down():
-	pass # Replace with function body.
-
 
 func _on_compare_button_down():
 	pass # Replace with function body.
