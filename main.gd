@@ -89,8 +89,7 @@ func my_draw_polyline(line: Array):
 		return
 	if len(line) > 1:
 		draw_polyline(line, color, width)
-	else:
-		draw_circle(line.back(), width, color)
+	draw_circle(line.front(), max(width - len(line)/2), color)
 
 func _draw():
 	for line in lines:
