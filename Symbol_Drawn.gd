@@ -30,11 +30,11 @@ func restore_from_save(dictionary):
 		for point in line:
 			lines.back().push_back(Vector2(point["x"], point["y"]))
 	
-	var stored_lines = dictionary["compressed_lines"]
-	for line in stored_lines:
-		lines.push_back([])
+	var stored_compressed_lines = dictionary["compressed_lines"]
+	for line in stored_compressed_lines:
+		compressed_lines.push_back([])
 		for point in line:
-			lines.back().push_back(Vector2(point["x"], point["y"]))
+			compressed_lines.back().push_back(Vector2(point["x"], point["y"]))
 	
 
 func prepare_rescaled_lines():
