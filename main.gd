@@ -156,7 +156,7 @@ func _on_compare_pressed():
 		file_read.close()
 		
 		
-		JSON.parse_string(stored_json)
+		var stored_dictionary = JSON.parse_string(stored_json)
 		
 		
 		
