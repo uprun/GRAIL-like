@@ -112,6 +112,23 @@ func _draw():
 func _on_compare_button_down():
 	pass # Replace with function body.
 
+func store_symbol(the_symbol: Symbol_Drawn):
+	var str: String
+	str = $TextEdit.text
+	var num = len(stored_symbols)
+	var str_num = String.num_int64(num).pad_zeros(3)
+	var path = "user://symbols/" + str + "/" + str_num + ".json"
+	
+	var file_access := FileAccess.open(path, FileAccess.WRITE)
+	if not file_access:
+		print("An error happened while saving data: ", FileAccess.get_open_error())
+		return
+	
+	var a = JSON.stringify(the_symbol.prepare_stored(), "    ")
+	file_access.store_line(a)
+	
+	file_access.close()
+
 
 var compare_index = null
 var symbol_to_compare: Symbol_Drawn = null
@@ -124,21 +141,7 @@ func _on_compare_pressed():
 	if drawn_symbol.lines.size() > 0:
 		drawn_symbol.prepare_rescaled_lines()
 		print()
-		var str: String
-		str = $TextEdit.text
-		var num = len(stored_symbols)
-		var str_num = String.num_int64(num).pad_zeros(3)
-		var path = "user://symbols/" + str + "/" + str_num + ".json"
 		
-		var file_access := FileAccess.open(path, FileAccess.WRITE)
-		if not file_access:
-			print("An error happened while saving data: ", FileAccess.get_open_error())
-			return
-		
-		var a = JSON.stringify(drawn_symbol.prepare_stored(), "    ")
-		file_access.store_line(a)
-		
-		file_access.close()
 		
 		print("text from label: ", $TextEdit.text)
 		
@@ -176,3 +179,4 @@ func _on_text_edit_text_changed():
 		var single_restored_symbol = Symbol_Drawn.new()
 		single_restored_symbol.restore_from_save(stored_dictionary)
 		stored_symbols.push_back(single_restored_symbol)
+		golden_match.push_back(false)
