@@ -3,6 +3,27 @@ class_name Symbol_Drawn extends Object
 var lines = []
 var compressed_lines = []
 
+func prepare_stored():
+	var dictionary = {}
+	var to_store_lines = []
+	for line in lines:
+		to_store_lines.push_back([])
+		for point in line:
+			to_store_lines.back().push_back({"x": point.x, "y": point.y})
+		
+	dictionary["lines"] = to_store_lines
+	
+	var to_store_compressed_lines = []
+	for line in compressed_lines:
+		to_store_compressed_lines.push_back([])
+		for point in line:
+			to_store_compressed_lines.back().push_back({"x": point.x, "y": point.y})
+	dictionary["compressed_lines"] = to_store_compressed_lines
+	dictionary["class_name"] = "Symbol_Drawn"
+	dictionary["class_definition_as_of_date"] = "2024-12-20--16h57m"
+	return dictionary
+	
+
 func prepare_rescaled_lines():
 	var first_line = self.lines[0]
 	var top = first_line[0]

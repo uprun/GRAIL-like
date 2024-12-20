@@ -143,7 +143,7 @@ func _on_compare_pressed():
 			print("An error happened while saving data: ", FileAccess.get_open_error())
 			return
 		
-		var a = JSON.stringify(drawn_symbol.compressed_lines, "    ")
+		var a = JSON.stringify(drawn_symbol.prepare_stored(), "    ")
 		file_access.store_line(a)
 		
 		file_access.close()
@@ -159,7 +159,7 @@ func _on_compare_pressed():
 		
 		
 		var global_path = ProjectSettings.globalize_path(save_path)
-		#OS.shell_show_in_file_manager(global_path)
+		OS.shell_show_in_file_manager(global_path)
 		
 		symbol_to_compare = drawn_symbol
 		symbol_to_draw_over = drawn_symbol
