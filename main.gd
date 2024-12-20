@@ -160,6 +160,8 @@ func _on_compare_pressed():
 		var restored_symbol = Symbol_Drawn.new()
 		restored_symbol.restore_from_save(stored_dictionary)
 		
+		draw_compressed_symbol(symbol_to_draw_over, Vector2(50, 200), Color.CORAL)
+		
 		
 		
 		
