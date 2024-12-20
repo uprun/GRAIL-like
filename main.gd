@@ -111,6 +111,7 @@ func _draw():
 	for i in len(restored_symbols):
 		var symbol = restored_symbols[i]
 		draw_compressed_symbol(symbol, offset, Color.CORAL)
+		offset.x += 150
 
 
 func _on_button_pressed():
