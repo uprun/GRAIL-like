@@ -1,7 +1,5 @@
 extends Node2D
 
-
-const Sub_Path = preload("res://Sub_Path.gd")
 const Symbol_Drawn = preload("res://Symbol_Drawn.gd")
 
 var width : int = 5
