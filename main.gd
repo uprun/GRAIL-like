@@ -161,7 +161,7 @@ func _on_compare_pressed():
 		
 		
 		var global_path = ProjectSettings.globalize_path(save_path)
-		OS.shell_show_in_file_manager(global_path)
+		#OS.shell_show_in_file_manager(global_path)
 		
 		symbol_to_compare = drawn_symbol
 		symbol_to_draw_over = drawn_symbol
