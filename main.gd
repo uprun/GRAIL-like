@@ -168,3 +168,7 @@ func _on_text_edit_text_changed():
 			return
 		var stored_json = file_read.get_as_text()
 		file_read.close()
+		var stored_dictionary = JSON.parse_string(stored_json)
+		var single_restored_symbol = Symbol_Drawn.new()
+		single_restored_symbol.restore_from_save(stored_dictionary)
+		stored_symbols.push_back(single_restored_symbol)
