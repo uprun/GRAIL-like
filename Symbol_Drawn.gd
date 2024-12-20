@@ -12,11 +12,13 @@ func prepare_stored():
 			to_store_lines.back().push_back({"x": point.x, "y": point.y})
 		
 	dictionary["lines"] = to_store_lines
+	
+	var to_store_compressed_lines = []
 	for line in compressed_lines:
-		to_store_lines.push_back([])
+		to_store_compressed_lines.push_back([])
 		for point in line:
-			to_store_lines.back().push_back({"x": point.x, "y": point.y})
-	dictionary["compressed_lines"] = []
+			to_store_compressed_lines.back().push_back({"x": point.x, "y": point.y})
+	dictionary["compressed_lines"] = to_store_compressed_lines
 	
 
 func prepare_rescaled_lines():
