@@ -3,6 +3,9 @@ class_name Symbol_Drawn extends Object
 var lines = []
 var compressed_lines = []
 
+func prepare_stored():
+	var dictionary = {}
+
 func prepare_rescaled_lines():
 	var first_line = self.lines[0]
 	var top = first_line[0]
