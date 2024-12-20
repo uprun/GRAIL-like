@@ -166,7 +166,7 @@ func _on_text_edit_text_changed():
 		DirAccess.make_dir_recursive_absolute(path)
 	var opened_dir = DirAccess.open(path)
 	for file in opened_dir.get_files():
-		var file_read = FileAccess.open(file, FileAccess.READ)
+		var file_read = FileAccess.open(path + file, FileAccess.READ)
 		if not file_read:
 			print("An error happened while saving data: ", FileAccess.get_open_error())
 			return
