@@ -136,18 +136,6 @@ func _on_compare_pressed():
 		
 		file_access.close()
 		
-		var file_read = FileAccess.open(save_path, FileAccess.READ)
-		if not file_read:
-			print("An error happened while saving data: ", FileAccess.get_open_error())
-			return
-		var stored_json = file_read.get_as_text()
-		file_read.close()
-		
-		
-		#var stored_dictionary = JSON.parse_string(stored_json)
-		#var single_restored_symbol = Symbol_Drawn.new()
-		#single_restored_symbol.restore_from_save(stored_dictionary)
-		
 		print("text from label: ", $TextEdit.text)
 		
 		
@@ -172,3 +160,11 @@ func _on_text_edit_text_changed():
 	var path = "user://symbols/" + str + "/"
 	if (DirAccess.dir_exists_absolute(path) == false):
 		DirAccess.make_dir_recursive_absolute(path)
+	var opened_dir = DirAccess.open(path)
+	for file in opened_dir.get_files():
+		var file_read = FileAccess.open(file, FileAccess.READ)
+		if not file_read:
+			print("An error happened while saving data: ", FileAccess.get_open_error())
+			return
+		var stored_json = file_read.get_as_text()
+		file_read.close()
