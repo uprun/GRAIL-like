@@ -22,3 +22,4 @@ placeholder_text = "symbol"
 
 [connection signal="button_down" from="compare" to="." method="_on_compare_button_down"]
 [connection signal="pressed" from="compare" to="." method="_on_compare_pressed"]
+[connection signal="text_changed" from="TextEdit" to="." method="_on_text_edit_text_changed"]

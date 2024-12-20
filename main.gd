@@ -163,4 +163,12 @@ func _on_compare_pressed():
 
 
 func _on_text_edit_text_changed():
-	pass # Replace with function body.
+	symbol_to_compare = null
+	stored_symbols = []
+	if $TextEdit.text.length() == 0:
+		return
+	var str: String
+	str = $TextEdit.text
+	var path = "user://symbols/" + str + "/"
+	if (DirAccess.dir_exists_absolute(path) == false):
+		DirAccess.make_dir_recursive_absolute(path)
