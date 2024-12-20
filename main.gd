@@ -110,7 +110,7 @@ func _draw():
 	offset = Vector2(50,200)
 	for i in len(restored_symbols):
 		var symbol = restored_symbols[i]
-		draw_compressed_symbol(symbol)
+		draw_compressed_symbol(symbol, offset, Color.CORAL)
 
 
 func _on_button_pressed():
